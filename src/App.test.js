@@ -8,7 +8,7 @@ describe("RegistrationForm", () => {
     const initialState = { data: [] };
     const mockStore = configureStore();
     test("Form submission", async() => {
-        store = mockStore(initialState);
+        let store = mockStore(initialState);
         render(<Provider store={store}><App /></Provider>)
         
         const noUser = screen.getByText(/No User/i);
