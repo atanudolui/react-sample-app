@@ -30,7 +30,7 @@ describe("RegistrationForm", () => {
         const button = await screen.getByRole('button');
         userEvent.click(button);
 
-        const listItemElements = await screen.findAllByRole('listitem');
+        const listItemElements = await screen.getAllByRole('listitem');
         expect(listItemElements).not.toHaveLength(0);
     });
 })
