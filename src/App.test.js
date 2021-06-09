@@ -5,8 +5,9 @@ import configureStore from 'redux-mock-store';
 import App from './App';
 
 describe("RegistrationForm", () => {
-    const initialState = { data: [] };
+    const initialState = { userData: { data: []} };
     const mockStore = configureStore();
+
     test("Form submission", async() => {
         let store = mockStore(initialState);
         render(<Provider store={store}><App /></Provider>)
@@ -14,13 +15,13 @@ describe("RegistrationForm", () => {
         const noUser = screen.getByText(/No User/i);
         expect(noUser).toBeInTheDocument();
 
-        const nameInput = await screen.findByRole('textbox', {
+        const nameInput = await screen.getByLabelText('Name', {
             name: 'userName'
         });
         userEvent.clear(nameInput);
         userEvent.type(nameInput, "Atanu Dolui");
         
-        const emailInput = await screen.findByRole('textbox', {
+        const emailInput = await screen.getByLabelText('Email', {
             name: 'email'
         });
         userEvent.clear(emailInput);
