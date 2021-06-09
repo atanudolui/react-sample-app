@@ -27,7 +27,7 @@ describe("RegistrationForm", () => {
         userEvent.clear(emailInput);
         userEvent.type(emailInput, "dolui.atanu@gmail.com");
 
-        const button = screen.findByRole('button', { name: 'save'});
+        const button = await screen.getByRole('button', { name: 'save'});
         userEvent.click(button);
 
         const listItemElements = await screen.findAllByRole('listitem');
